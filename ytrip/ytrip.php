@@ -50,6 +50,7 @@ if ( ! class_exists( 'YTrip' ) ) {
         }
 
         public function __construct() {
+            // DON'T load textdomain here - load in init hook
             $this->includes();
             $this->init_hooks();
         }
@@ -111,10 +112,16 @@ if ( ! class_exists( 'YTrip' ) ) {
         }
 
         private function init_hooks() {
+            // Load textdomain on plugins_loaded - AFTER all plugins are loaded
             add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
         }
 
         public function load_textdomain() {
+            // Only load textdomain if not already loaded
+            if ( is_textdomain_loaded( 'ytrip' ) ) {
+                return;
+            }
+            
             load_plugin_textdomain( 'ytrip', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
         }
     }
@@ -123,16 +130,6 @@ if ( ! class_exists( 'YTrip' ) ) {
         return YTrip::instance();
     }
 
-    // Init Plugin
+    // Init Plugin on plugins_loaded
     add_action( 'plugins_loaded', 'YTrip' );
-
-    // Emergency Fix for Admin Capabilities
-    register_activation_hook( __FILE__, 'ytrip_fix_capabilities' );
-    function ytrip_fix_capabilities() {
-        $role = get_role( 'administrator' );
-        if ( $role ) {
-            $role->add_cap( 'manage_options' );
-            $role->add_cap( 'ytrip_settings' ); // Custom cap just in case
-        }
-    }
 }
