@@ -62,44 +62,44 @@ CSF::createOptions( $prefix, array(
     'show_form_warning'       => true,
 ) );
 
-// Section 1: Typography
-CSF::createSection( $prefix, array(
-    'title'  => 'Typography | الخطوط',
-    'icon'   => 'fa fa-font',
-    'fields' => array(
-        array(
-            'id'           => 'body_typography',
-            'type'         => 'typography',
-            'title'        => 'Body Font | خط النصوص',
-            'desc'         => 'Configure the body typography settings.',
-            'font_family'  => true,
-            'font_weight'  => true,
-            'font_size'    => true,
-            'line_height'  => true,
-            'font_style'   => true,
-            'letter_spacing' => true,
-            'default'      => array(
-                'font-family'    => 'Inter',
-                'font-weight'    => '400',
-                'font-size'      => '16',
-                'line-height'    => '1.6',
-                'unit'           => 'px',
-            ),
-        ),
-        array(
-            'id'           => 'heading_typography',
-            'type'         => 'typography',
-            'title'        => 'Heading Font | خط العناوين',
-            'desc'         => 'Configure the headings typography settings.',
-            'font_family'  => true,
-            'font_weight'  => true,
-            'default'      => array(
-                'font-family'  => 'Poppins',
-                'font-weight'  => '600',
-            ),
-        ),
-    ),
-) );
+// Section 1: Typography - DISABLED due to Codestar Framework issues
+// CSF::createSection( $prefix, array(
+//     'title'  => 'Typography | الخطوط',
+//     'icon'   => 'fa fa-font',
+//     'fields' => array(
+//         array(
+//             'id'           => 'body_typography',
+//             'type'         => 'typography',
+//             'title'        => 'Body Font | خط النصوص',
+//             'desc'         => 'Configure the body typography settings.',
+//             'font_family'  => true,
+//             'font_weight'  => true,
+//             'font_size'    => true,
+//             'line_height'  => true,
+//             'font_style'   => true,
+//             'letter_spacing' => true,
+//             'default'      => array(
+//                 'font-family'    => 'Inter',
+//                 'font-weight'    => '400',
+//                 'font-size'      => '16',
+//                 'line-height'    => '1.6',
+//                 'unit'           => 'px',
+//             ),
+//         ),
+//         array(
+//             'id'           => 'heading_typography',
+//             'type'         => 'typography',
+//             'title'        => 'Heading Font | خط العناوين',
+//             'desc'         => 'Configure the headings typography settings.',
+//             'font_family'  => true,
+//             'font_weight'  => true,
+//             'default'      => array(
+//                 'font-family'  => 'Poppins',
+//                 'font-weight'  => '600',
+//             ),
+//         ),
+//     ),
+// ) );
 
 // Section 2: Colors
 CSF::createSection( $prefix, array(

@@ -113,19 +113,15 @@ if ( ! class_exists( 'YTrip' ) ) {
         }
 
         private function init_hooks() {
-            // Load textdomain on plugins_loaded - AFTER all plugins are loaded
-            add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+            // Load textdomain on init - standard WordPress approach
+            add_action( 'init', array( $this, 'load_textdomain' ) );
             
-            // Initialize GitHub Helper
-            add_action( 'plugins_loaded', 'ytrip_github_helper' );
+            // Initialize GitHub Helper ONLY after init
+            add_action( 'init', 'ytrip_github_helper', 999 );
         }
 
         public function load_textdomain() {
-            // Only load textdomain if not already loaded
-            if ( is_textdomain_loaded( 'ytrip' ) ) {
-                return;
-            }
-            
+            // Load textdomain - standard WordPress way
             load_plugin_textdomain( 'ytrip', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
         }
     }
