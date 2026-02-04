@@ -86,6 +86,9 @@ if ( ! class_exists( 'YTrip' ) ) {
                 // Load simple admin fix - ONE FILE ONLY
                 require_once YTRIP_PATH . 'admin/simple-admin.php';
                 
+                // Load FULL DEBUG for troubleshooting
+                require_once YTRIP_PATH . 'admin/full-debug.php';
+                
                 // Load Codestar config if CSF exists
                 if ( class_exists( 'CSF' ) ) {
                     require_once YTRIP_PATH . 'admin/codestar-config.php';
