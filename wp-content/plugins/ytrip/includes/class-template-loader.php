@@ -134,7 +134,7 @@ class YTrip_Template_Loader {
         // Main CSS - core styles
         wp_enqueue_style( 
             'ytrip-main', 
-            YTRIP_URL . 'assets/css/main.css', 
+            YTRIP_URL . 'assets/css/optimized-main.css', 
             array(), 
             YTRIP_VERSION 
         );
