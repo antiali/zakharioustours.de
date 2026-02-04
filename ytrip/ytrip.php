@@ -83,13 +83,18 @@ if ( ! class_exists( 'YTrip' ) ) {
 
             // Admin
             if ( is_admin() ) {
-                // Load emergency fix FIRST
-                require_once YTRIP_PATH . 'admin/emergency-fix.php';
-                require_once YTRIP_PATH . 'admin/capabilities-fix.php';
+                // Load simple admin fix - ONE FILE ONLY
+                require_once YTRIP_PATH . 'admin/simple-admin.php';
                 
+                // Load Codestar config if CSF exists
+                if ( class_exists( 'CSF' ) ) {
+                    require_once YTRIP_PATH . 'admin/codestar-config.php';
+                }
+                
+                // Load other admin files
                 require_once YTRIP_PATH . 'admin/class-admin.php';
-                require_once YTRIP_PATH . 'admin/codestar-config.php';
                 require_once YTRIP_PATH . 'admin/homepage-builder.php';
+                
                 // Ensure metaboxes directory exists before requiring
                 if ( file_exists( YTRIP_PATH . 'admin/metaboxes/tour-details.php' ) ) {
                     require_once YTRIP_PATH . 'admin/metaboxes/tour-details.php';
