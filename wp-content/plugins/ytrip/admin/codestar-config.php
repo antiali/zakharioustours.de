@@ -19,7 +19,7 @@ CSF::createOptions($prefix, array(
     'menu_position'   => 25,
     'show_bar_menu'   => true,
     'theme'           => 'light',
-    'capability'      => 'manage_options',
+    'capability'      => 'edit_theme_options', // Changed from manage_options to broader capability
 ));
 
 // Typography (Kept same)

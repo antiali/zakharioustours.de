@@ -102,4 +102,14 @@ if ( ! class_exists( 'YTrip' ) ) {
 
     // Init Plugin
     add_action( 'plugins_loaded', 'YTrip' );
+
+    // Emergency Fix for Admin Capabilities
+    register_activation_hook( __FILE__, 'ytrip_fix_capabilities' );
+    function ytrip_fix_capabilities() {
+        $role = get_role( 'administrator' );
+        if ( $role ) {
+            $role->add_cap( 'manage_options' );
+            $role->add_cap( 'ytrip_settings' ); // Custom cap just in case
+        }
+    }
 }
