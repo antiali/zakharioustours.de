@@ -110,6 +110,7 @@ if ( ! class_exists( 'YTrip' ) ) {
             require_once YTRIP_PATH . 'public/class-frontend.php';
             require_once YTRIP_PATH . 'public/class-homepage.php';
             require_once YTRIP_PATH . 'public/class-search.php';
+            require_once YTRIP_PATH . 'public/class-frontend-fix.php';
         }
 
         private function init_hooks() {
@@ -118,6 +119,9 @@ if ( ! class_exists( 'YTrip' ) ) {
             
             // Initialize GitHub Helper ONLY after init
             add_action( 'init', 'ytrip_github_helper', 999 );
+            
+            // Initialize Frontend Fix - remove CDN dependencies
+            add_action( 'init', 'ytrip_frontend_fix' );
         }
 
         public function load_textdomain() {
