@@ -1,0 +1,870 @@
+/**
+ * YTrip Archive Filters CSS
+ */
+
+/* ============================================
+   Archive Layout
+============================================ */
+.ytrip-archive-layout {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.ytrip-archive-layout--sidebar {
+    grid-template-columns: 280px 1fr;
+}
+
+.ytrip-archive-layout--topbar {
+    grid-template-columns: 1fr;
+}
+
+/* ============================================
+   Archive Header
+============================================ */
+.ytrip-archive-header {
+    background: linear-gradient(135deg, var(--ytrip-primary) 0%, var(--ytrip-primary-dark) 100%);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ytrip-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1;
+}
+
+.ytrip-has-bg .ytrip-overlay {
+    display: block;
+}
+
+.ytrip-archive-header .ytrip-container {
+    position: relative;
+    z-index: 2;
+}
+
+.ytrip-archive-header__title {
+    font-family: var(--ytrip-font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+}
+
+.ytrip-archive-header__desc {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* ============================================
+   Sidebar Filters
+============================================ */
+.ytrip-archive-sidebar {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    background: #fff;
+    border-radius: var(--ytrip-radius-card, 12px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+}
+
+.ytrip-filter-section {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid #eee;
+}
+
+.ytrip-filter-section:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.ytrip-filter-section__title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #333;
+    margin: 0 0 0.75rem;
+}
+
+.ytrip-filter-select {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.ytrip-filter-select:focus {
+    outline: none;
+    border-color: var(--ytrip-primary);
+}
+
+.ytrip-price-range {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.ytrip-price-range .ytrip-input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.875rem;
+}
+
+.ytrip-price-range__sep {
+    color: #999;
+}
+
+.ytrip-filter-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ytrip-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.ytrip-checkbox input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--ytrip-primary);
+}
+
+.ytrip-stars {
+    color: #f59e0b;
+    letter-spacing: 1px;
+}
+
+.ytrip-filter-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.ytrip-btn-block {
+    width: 100%;
+}
+
+/* ============================================
+   Toolbar (Ultra Modern)
+============================================ */
+.ytrip-archive-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.ytrip-archive-toolbar__left,
+.ytrip-archive-toolbar__right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Results Count */
+.ytrip-archive-toolbar__count {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    font-family: var(--ytrip-font-heading, "Poppins", sans-serif);
+}
+
+.ytrip-archive-toolbar__count .count-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ytrip-secondary, #111);
+}
+
+.ytrip-archive-toolbar__count .count-label {
+    font-size: 0.875rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Filter Button (Modern) */
+.ytrip-modern-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ytrip-modern-filter-btn:hover {
+    border-color: var(--ytrip-primary);
+    color: var(--ytrip-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Divider */
+.ytrip-toolbar-divider {
+    width: 1px;
+    height: 32px;
+    background: #eee;
+    margin: 0 0.5rem;
+}
+
+/* Sort Dropdown (Modern) */
+.ytrip-modern-sort {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.ytrip-sort-label {
+    font-size: 0.875rem;
+    color: #888;
+    font-weight: 500;
+}
+
+.ytrip-select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.ytrip-sort-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    background: #f9fafb;
+    border: 1px solid #eee;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    line-height: normal;
+    transition: all 0.2s;
+}
+
+.ytrip-sort-select:hover,
+.ytrip-sort-select:focus {
+    background: #fff;
+    border-color: #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+
+.ytrip-select-arrow {
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+    color: #888;
+}
+
+/* View Toggle (Segmented) */
+.ytrip-view-toggle {
+    display: flex;
+    padding: 3px;
+    background: #f1f3f5;
+    border-radius: 10px;
+    border: none;
+}
+
+.ytrip-view-toggle__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ytrip-view-toggle__btn:hover {
+    color: #333;
+}
+
+.ytrip-view-toggle__btn.active {
+    background: #fff;
+    color: var(--ytrip-primary, #2563eb);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Columns Selector (Dots) */
+.ytrip-columns-selector {
+    display: flex;
+    gap: 0.25rem;
+    background: #f1f3f5;
+    padding: 3px;
+    border-radius: 20px;
+}
+
+.ytrip-columns-selector__btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ytrip-columns-selector__btn.active {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Column Dots Logic */
+.ytrip-columns-selector__btn span {
+    display: block;
+    background: currentColor;
+    border-radius: 1px;
+    color: #888;
+}
+
+.ytrip-columns-selector__btn:hover span,
+.ytrip-columns-selector__btn.active span {
+    color: var(--ytrip-primary);
+}
+
+.col-dot-2,
+.col-dot-3,
+.col-dot-4 {
+    height: 12px;
+    width: 12px;
+    position: relative;
+}
+
+/* CSS generated icons for columns */
+/* 2 Cols */
+.col-dot-2::before,
+.col-dot-2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: currentColor;
+    border-radius: 1px;
+}
+
+.col-dot-2::before {
+    left: 0;
+}
+
+.col-dot-2::after {
+    right: 0;
+}
+
+/* 3 Cols */
+.col-dot-3::before,
+.col-dot-3::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: currentColor;
+    border-radius: 1px;
+}
+
+.col-dot-3::before {
+    left: 0;
+}
+
+.col-dot-3::after {
+    right: 0;
+}
+
+.col-dot-3 {
+    background: none !important;
+    box-shadow: inset 0 0 0 100px transparent;
+}
+
+/* Middle line via gradient or extra element ideally, but simplistic approach: */
+.col-dot-3 {
+    background: linear-gradient(to right, currentColor 2px, transparent 2px, transparent 5px, currentColor 5px, currentColor 7px, transparent 7px, transparent 10px, currentColor 10px) !important;
+    width: 12px;
+}
+
+/* 4 Cols */
+.col-dot-4 {
+    background: linear-gradient(to right, currentColor 2px, transparent 2px, transparent 3.33px, currentColor 3.33px, currentColor 5.33px, transparent 5.33px, transparent 6.66px, currentColor 6.66px, currentColor 8.66px, transparent 8.66px, transparent 10px, currentColor 10px) !important;
+    width: 12px;
+}
+
+/* ============================================
+   Top Bar Filters
+============================================ */
+.ytrip-archive-filter-bar {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.ytrip-filters-topbar__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.ytrip-filter-item {
+    flex: 1;
+    min-width: 150px;
+}
+
+.ytrip-filter-item label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 0.375rem;
+}
+
+.ytrip-filter-item--price .ytrip-filter-price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.ytrip-filter-item--price input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    width: 80px;
+}
+
+.ytrip-filter-item--actions {
+    display: flex;
+    gap: 0.5rem;
+    flex: 0 0 auto;
+}
+
+/* ============================================
+   Tours Grid / List Container
+============================================ */
+.ytrip-tours-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* Grid column classes */
+.ytrip-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.ytrip-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.ytrip-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.ytrip-cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+/* List view */
+.ytrip-view-list {
+    grid-template-columns: 1fr;
+}
+
+/* ============================================
+   List View Card
+============================================ */
+.ytrip-card--list-view {
+    display: flex;
+    background: #fff;
+    border-radius: var(--ytrip-radius-card, 12px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.ytrip-card--list-view:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.ytrip-card--list-view .ytrip-card__link {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.ytrip-card--list-view .ytrip-card__image {
+    position: relative;
+    flex: 0 0 300px;
+    aspect-ratio: 4/3;
+}
+
+.ytrip-card--list-view .ytrip-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ytrip-card--list-view .ytrip-card__content {
+    flex: 1;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.ytrip-card--list-view .ytrip-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.ytrip-card--list-view .ytrip-card__category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--ytrip-primary);
+}
+
+.ytrip-card--list-view .ytrip-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.ytrip-card--list-view .ytrip-card__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: #111;
+}
+
+.ytrip-card--list-view .ytrip-card__location {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: #666;
+    margin: 0 0 0.75rem;
+}
+
+.ytrip-card--list-view .ytrip-card__excerpt {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 auto;
+}
+
+.ytrip-card--list-view .ytrip-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.ytrip-card--list-view .ytrip-card__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.ytrip-card--list-view .ytrip-card__action {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    min-width: 180px;
+    text-align: center;
+    gap: 1rem;
+}
+
+.ytrip-card--list-view .ytrip-card__price {
+    display: flex;
+    flex-direction: column;
+}
+
+.ytrip-card--list-view .ytrip-card__from {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.ytrip-card--list-view .ytrip-card__amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ytrip-primary);
+}
+
+.ytrip-card--list-view .ytrip-card__per {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.ytrip-card--list-view .ytrip-card__wishlist {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 2;
+}
+
+.ytrip-card--list-view .ytrip-card__wishlist:hover {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+/* ============================================
+   Loading & No Results
+============================================ */
+.ytrip-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    gap: 1rem;
+}
+
+.ytrip-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #eee;
+    border-top-color: var(--ytrip-primary);
+    border-radius: 50%;
+    animation: ytrip-spin 0.8s linear infinite;
+}
+
+@keyframes ytrip-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ytrip-no-results {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    font-size: 1.125rem;
+}
+
+/* ============================================
+   Responsive
+============================================ */
+@media (max-width: 1024px) {
+    .ytrip-cols-5 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .ytrip-archive-layout--sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .ytrip-archive-sidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .ytrip-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ytrip-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ytrip-archive-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ytrip-archive-toolbar__right {
+        justify-content: space-between;
+    }
+
+    .ytrip-columns-selector {
+        display: none;
+    }
+
+    .ytrip-card--list-view .ytrip-card__link {
+        flex-direction: column;
+    }
+
+    .ytrip-card--list-view .ytrip-card__image {
+        flex: 0 0 auto;
+    }
+
+    .ytrip-card--list-view .ytrip-card__action {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .ytrip-cols-2,
+    .ytrip-cols-3,
+    .ytrip-cols-4,
+    .ytrip-cols-5 {
+        grid-template-columns: 1fr;
+    }
+
+    .ytrip-filters-topbar__row {
+        flex-direction: column;
+    }
+
+    .ytrip-filter-item {
+        width: 100%;
+    }
+}
+
+/* ============================================
+   Pagination Styles
+============================================ */
+.ytrip-pagination-wrapper {
+    margin-top: 2rem;
+}
+
+/* Numbered pagination */
+.ytrip-pagination--numbered {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.ytrip-pagination--numbered .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 0.75rem;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.ytrip-pagination--numbered .page-numbers:hover {
+    border-color: var(--ytrip-primary);
+    color: var(--ytrip-primary);
+}
+
+.ytrip-pagination--numbered .page-numbers.current {
+    background: var(--ytrip-primary);
+    border-color: var(--ytrip-primary);
+    color: #fff;
+}
+
+/* Load More button */
+.ytrip-pagination--loadmore {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+#ytrip-loadmore-btn {
+    padding: 0.875rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ytrip-spinner-sm {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: ytrip-spin 0.6s linear infinite;
+    display: inline-block;
+}
+
+/* Infinite scroll */
+.ytrip-pagination--infinite {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.ytrip-infinite-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: #666;
+}
+
+.ytrip-all-loaded {
+    color: #999;
+    font-size: 0.875rem;
+    font-style: italic;
+    margin: 0;
+}

@@ -1,0 +1,39 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 6
+    
+    paths:
+        - includes
+        - admin
+        - ytrip.php
+    
+    excludePaths:
+        - vendor
+        - tests
+        - node_modules
+    
+    # WordPress stubs
+    bootstrapFiles:
+        - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+    
+    # Ignore errors in third-party code
+    ignoreErrors:
+        # CodeStar Framework undefined classes
+        - '#Class CSF not found#'
+        - '#Call to static method [a-zA-Z]+\(\) on an unknown class CSF#'
+        
+        # WordPress dynamic hooks
+        - '#Function do_action invoked with \d+ parameters, 1-\d+ required#'
+        - '#Function apply_filters invoked with \d+ parameters, 1-\d+ required#'
+        
+        # WordPress superglobals
+        - '#Variable \$_(GET|POST|REQUEST|SERVER) might not be defined#'
+    
+    # Treat phpdoc @var as trusted
+    treatPhpDocTypesAsCertain: false
+    
+    # Check for unused private properties
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false

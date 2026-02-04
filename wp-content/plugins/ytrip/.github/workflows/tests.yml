@@ -1,0 +1,203 @@
+name: YTrip Plugin Tests
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  WP_TESTS_DIR: /tmp/wordpress-tests-lib
+  WP_CORE_DIR: /tmp/wordpress
+
+jobs:
+  # ================================================================
+  # PHPUnit Test Suite
+  # ================================================================
+  test:
+    name: PHP ${{ matrix.php }} / WP ${{ matrix.wordpress }}
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.0', '8.1', '8.2']
+        wordpress: ['6.0', '6.4', 'latest']
+        exclude:
+          # PHP 8.1+ requires WP 5.9+
+          - php: '8.2'
+            wordpress: '5.9'
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: wp_tests
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mysqli, mbstring, intl
+          coverage: xdebug
+          tools: composer:v2
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Install WordPress Test Suite
+        run: |
+          bash bin/install-wp-tests.sh wp_tests root root 127.0.0.1 ${{ matrix.wordpress }}
+
+      - name: Run PHPUnit Tests
+        run: |
+          composer test
+        env:
+          WP_TESTS_DIR: ${{ env.WP_TESTS_DIR }}
+          WP_CORE_DIR: ${{ env.WP_CORE_DIR }}
+
+      - name: Upload Coverage Report
+        if: matrix.php == '8.1' && matrix.wordpress == 'latest'
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./tests/coverage.xml
+          fail_ci_if_error: false
+
+  # ================================================================
+  # PHPCS - WordPress Coding Standards
+  # ================================================================
+  phpcs:
+    name: WordPress Coding Standards
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: cs2pr
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Run PHPCS
+        run: |
+          composer phpcs -- --report=checkstyle | cs2pr
+
+  # ================================================================
+  # PHPStan - Static Analysis
+  # ================================================================
+  phpstan:
+    name: PHPStan Static Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Run PHPStan
+        run: |
+          composer phpstan
+
+  # ================================================================
+  # Security Audit
+  # ================================================================
+  security:
+    name: Security Vulnerability Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Run Security Tests
+        run: |
+          composer test -- --testsuite=Security
+
+      - name: Check for known vulnerabilities
+        run: |
+          composer audit
+
+  # ================================================================
+  # Build & Package for CodeCanyon
+  # ================================================================
+  build:
+    name: Build Plugin Package
+    runs-on: ubuntu-latest
+    needs: [test, phpcs, phpstan, security]
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install production dependencies
+        run: |
+          composer install --no-dev --optimize-autoloader
+
+      - name: Create distribution package
+        run: |
+          mkdir -p dist
+          rsync -av --exclude='.git' \
+                    --exclude='.github' \
+                    --exclude='tests' \
+                    --exclude='phpunit.xml' \
+                    --exclude='.phpcs.xml' \
+                    --exclude='phpstan.neon' \
+                    --exclude='node_modules' \
+                    --exclude='*.md' \
+                    ./ dist/ytrip/
+
+      - name: Create ZIP archive
+        run: |
+          cd dist
+          zip -r ytrip-${{ github.sha }}.zip ytrip/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ytrip-plugin
+          path: dist/ytrip-*.zip
+          retention-days: 30

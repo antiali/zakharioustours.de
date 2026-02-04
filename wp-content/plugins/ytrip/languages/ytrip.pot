@@ -1,0 +1,194 @@
+# Copyright (C) 2026 YTrip
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: YTrip 1.0.0\n"
+"Report-Msgid-Bugs-To: https://zakharioustours.de\n"
+"POT-Creation-Date: 2026-01-31 08:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/single-ytrip_tour.php
+msgid "Home"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Tours"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "reviews"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Overview"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Itinerary"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Included/Excluded"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "FAQ"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Highlights"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "No itinerary available."
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Included"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Excluded"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "No FAQs available."
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "/ person"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Select Date"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Adults"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Children"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Book Now"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Free Cancellation"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Instant Confirmation"
+msgstr ""
+
+#: templates/single-ytrip_tour.php
+msgid "Secure Payment"
+msgstr ""
+
+#: templates/parts/tour-card.php
+msgid "Featured"
+msgstr ""
+
+#: templates/parts/tour-card.php
+msgid "Add to wishlist"
+msgstr ""
+
+#: templates/parts/tour-card.php
+msgid "From"
+msgstr ""
+
+#: templates/parts/tour-card.php
+msgid "View Details"
+msgstr ""
+
+#: templates/homepage/hero-slider.php
+msgid "Award Winning Travel Agency"
+msgstr ""
+
+#: templates/homepage/hero-slider.php
+msgid "Discover Your Next"
+msgstr ""
+
+#: templates/homepage/hero-slider.php
+msgid "Adventure"
+msgstr ""
+
+#: templates/homepage/hero-slider.php
+msgid "Explore the world with our premium travel experiences. Book your dream vacation today."
+msgstr ""
+
+#: templates/homepage/hero-slider.php
+msgid "Explore Tours"
+msgstr ""
+
+#: templates/homepage/hero-slider.php
+msgid "Search Destinations"
+msgstr ""
+
+#: templates/homepage/search-form.php
+msgid "Destination"
+msgstr ""
+
+#: templates/homepage/search-form.php
+msgid "Where do you want to go?"
+msgstr ""
+
+#: templates/homepage/search-form.php
+msgid "Date"
+msgstr ""
+
+#: templates/homepage/search-form.php
+msgid "Select date"
+msgstr ""
+
+#: templates/homepage/search-form.php
+msgid "Guests"
+msgstr ""
+
+#: templates/homepage/search-form.php
+msgid "Guest"
+msgstr ""
+
+#: templates/homepage/search-form.php
+msgid "Search"
+msgstr ""
+
+#: templates/homepage/featured-tours.php
+msgid "Featured Tours"
+msgstr ""
+
+#: templates/homepage/featured-tours.php
+msgid "Discover our most popular travel experiences handpicked for you."
+msgstr ""
+
+#: templates/homepage/featured-tours.php
+msgid "View All Tours"
+msgstr ""
+
+#: templates/homepage/featured-tours.php
+msgid "No tours found."
+msgstr ""
+
+#: templates/homepage/destinations.php
+msgid "Popular Destinations"
+msgstr ""
+
+#: templates/homepage/destinations.php
+msgid "Explore breathtaking locations around the world."
+msgstr ""
+
+#. translators: %d: number of tours
+#: templates/homepage/destinations.php
+msgid "%d Tour"
+msgid_plural "%d Tours"
+msgstr[0] ""
+msgstr[1] ""

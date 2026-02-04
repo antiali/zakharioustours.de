@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+ * YTrip Plugin - PHP_CodeSniffer Configuration
+ *
+ * WordPress Coding Standards (WPCS) ruleset configuration.
+ *
+ * @package YTrip
+ -->
+<ruleset name="YTrip Coding Standards">
+    <description>WordPress Coding Standards for YTrip plugin.</description>
+
+    <!-- Paths to check -->
+    <file>.</file>
+
+    <!-- Exclude directories -->
+    <exclude-pattern>/vendor/*</exclude-pattern>
+    <exclude-pattern>/node_modules/*</exclude-pattern>
+    <exclude-pattern>/tests/*</exclude-pattern>
+    <exclude-pattern>/.github/*</exclude-pattern>
+    <exclude-pattern>/assets/*</exclude-pattern>
+
+    <!-- PHP version compatibility -->
+    <config name="testVersion" value="7.4-"/>
+
+    <!-- WordPress version compatibility -->
+    <config name="minimum_supported_wp_version" value="5.9"/>
+
+    <!-- Text domain for i18n -->
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="ytrip"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Prefix check for global functions/classes -->
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="ytrip"/>
+                <element value="YTrip"/>
+                <element value="YTRIP"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Use WordPress Coding Standards -->
+    <rule ref="WordPress">
+        <!-- Allow short array syntax -->
+        <exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+        
+        <!-- Allow file structure flexibility -->
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+    </rule>
+
+    <!-- Additional WordPress Extra rules -->
+    <rule ref="WordPress-Extra"/>
+
+    <!-- WordPress VIP rules for security -->
+    <rule ref="WordPress-VIP-Go">
+        <!-- Exclude some overly strict VIP rules -->
+        <exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_fwrite"/>
+        <exclude name="WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE"/>
+    </rule>
+
+    <!-- Documentation rules -->
+    <rule ref="WordPress-Docs"/>
+
+    <!-- PHPCompatibility for PHP 7.4+ -->
+    <rule ref="PHPCompatibilityWP"/>
+
+    <!-- Show progress -->
+    <arg value="sp"/>
+
+    <!-- Colors in output -->
+    <arg name="colors"/>
+
+    <!-- Show sniff codes in reports -->
+    <arg value="s"/>
+
+    <!-- Report format -->
+    <arg name="report" value="full"/>
+
+    <!-- Cache results -->
+    <arg name="cache" value=".phpcs.cache"/>
+
+    <!-- Parallel processing -->
+    <arg name="parallel" value="8"/>
+</ruleset>

@@ -1,0 +1,73 @@
+<?php
+/**
+ * Card Style 9: Horizontal Magazine
+ * Wide format with editorial style
+ * 
+ * @package YTrip
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+$tour_id = get_the_ID();
+$meta = get_post_meta( $tour_id, 'ytrip_tour_details', true );
+$options = get_option( 'ytrip_settings' );
+$product_id = get_post_meta( $tour_id, '_ytrip_wc_product_id', true );
+$product = $product_id && function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : null;
+$dest = get_the_terms( $tour_id, 'ytrip_destination' );
+$cat = get_the_terms( $tour_id, 'ytrip_category' );
+?>
+
+<article class="ytrip-card ytrip-card--horizontal" data-hover="<?php echo esc_attr( $options['card_hover_effect'] ?? 'lift' ); ?>">
+    <a href="<?php the_permalink(); ?>" class="ytrip-card__link">
+        <div class="ytrip-card__image-col">
+            <?php if ( has_post_thumbnail() ) : ?>
+                <?php the_post_thumbnail( 'large' ); ?>
+            <?php endif; ?>
+        </div>
+        
+        <div class="ytrip-card__content-col">
+            <?php if ( $cat && ! is_wp_error( $cat ) ) : ?>
+            <span class="ytrip-card__category"><?php echo esc_html( $cat[0]->name ); ?></span>
+            <?php endif; ?>
+            
+            <h3 class="ytrip-card__title"><?php the_title(); ?></h3>
+            
+            <?php if ( $product && $product->get_review_count() > 0 ) : ?>
+            <div class="ytrip-card__rating">
+                <span class="ytrip-stars"><?php echo str_repeat( '★', round( $product->get_average_rating() ) ); ?><?php echo str_repeat( '☆', 5 - round( $product->get_average_rating() ) ); ?></span>
+            </div>
+            <?php endif; ?>
+            
+            <?php if ( has_excerpt() ) : ?>
+            <p class="ytrip-card__excerpt"><?php echo wp_trim_words( get_the_excerpt(), 25 ); ?></p>
+            <?php endif; ?>
+            
+            <div class="ytrip-card__meta-row">
+                <?php if ( $dest && ! is_wp_error( $dest ) ) : ?>
+                <span class="ytrip-card__location">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <?php echo esc_html( $dest[0]->name ); ?>
+                </span>
+                <?php endif; ?>
+                
+                <?php if ( ! empty( $meta['duration'] ) ) : ?>
+                <span class="ytrip-card__duration">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <?php echo esc_html( $meta['duration'] ); ?>
+                </span>
+                <?php endif; ?>
+            </div>
+            
+            <div class="ytrip-card__footer">
+                <?php if ( $product ) : ?>
+                <span class="ytrip-card__price"><?php echo $product->get_price_html(); ?></span>
+                <?php endif; ?>
+                
+                <span class="ytrip-card__cta">
+                    <?php esc_html_e( 'Book Now', 'ytrip' ); ?>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+            </div>
+        </div>
+    </a>
+</article>
