@@ -1,0 +1,35 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+debug.log
+
+# Dependencies (if using npm/composer for dev)
+node_modules/
+
+# Build artifacts
+*.zip
+*.tar.gz
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+
+# Sensitive files
+.env
+*.sql
+*.bak
+
+# Temporary files
+*.tmp
+*.swp
+*~

@@ -1,84 +1,43 @@
 {
-    "name": "ytrip/ytrip-travel-booking",
-    "description": "Professional travel/tourism booking system for WordPress with CodeStar Framework integration.",
+    "name": "calldigital/ytrip",
+    "description": "Professional travel/tourism booking system for WordPress with Codestar Framework integration",
+    "version": "1.0.0",
     "type": "wordpress-plugin",
-    "version": "2.1.0",
     "license": "GPL-2.0-or-later",
-    "keywords": [
-        "wordpress",
-        "travel",
-        "booking",
-        "tours",
-        "woocommerce"
-    ],
     "authors": [
         {
-            "name": "YTrip",
+            "name": "Mohamed Ahmed",
+            "email": "contact@calldigitalnow.com",
             "homepage": "https://zakharioustours.de"
         }
     ],
-    "require": {
-        "php": ">=7.4"
+    "homepage": "https://zakharioustours.de",
+    "support": {
+        "issues": "https://github.com/calldigital/ytrip/issues"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^9.6",
-        "wp-coding-standards/wpcs": "^3.0",
-        "phpstan/phpstan": "^1.10",
-        "szepeviktor/phpstan-wordpress": "^1.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-        "php-coveralls/php-coveralls": "^2.5",
-        "yoast/phpunit-polyfills": "^2.0"
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "travel",
+        "booking",
+        "tourism",
+        "tours",
+        "woocommerce"
+    ],
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "^1.0"
     },
     "autoload": {
-        "psr-4": {
-            "YTrip\\": "includes/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "YTrip\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "test": [
-            "@php ./vendor/bin/phpunit"
-        ],
-        "test:unit": [
-            "@php ./vendor/bin/phpunit --testsuite=Unit"
-        ],
-        "test:integration": [
-            "@php ./vendor/bin/phpunit --testsuite=Integration"
-        ],
-        "test:security": [
-            "@php ./vendor/bin/phpunit --testsuite=Security"
-        ],
-        "test:coverage": [
-            "@php ./vendor/bin/phpunit --coverage-html tests/coverage"
-        ],
-        "phpcs": [
-            "@php ./vendor/bin/phpcs"
-        ],
-        "phpcbf": [
-            "@php ./vendor/bin/phpcbf"
-        ],
-        "phpstan": [
-            "@php ./vendor/bin/phpstan analyse"
-        ],
-        "lint": [
-            "@phpcs",
-            "@phpstan"
-        ],
-        "all": [
-            "@lint",
-            "@test"
+        "classmap": [
+            "includes/",
+            "admin/"
         ]
     },
     "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        },
-        "optimize-autoloader": true,
+        "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

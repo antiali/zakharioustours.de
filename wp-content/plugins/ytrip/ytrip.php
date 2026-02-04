@@ -20,9 +20,20 @@ define( 'YTRIP_PATH', plugin_dir_path( __FILE__ ) );
 define( 'YTRIP_URL', plugin_dir_url( __FILE__ ) );
 define( 'YTRIP_BASENAME', plugin_basename( __FILE__ ) );
 
-// Include Framework
-if ( ! class_exists( 'CSF' ) && file_exists( YTRIP_PATH . '/vendor/codestar-framework/codestar-framework.php' ) ) {
-    require_once YTRIP_PATH . '/vendor/codestar-framework/codestar-framework.php';
+// Include Framework - Try multiple paths
+if ( ! class_exists( 'CSF' ) ) {
+    $csf_paths = array(
+        YTRIP_PATH . 'vendor/codestar-framework/codestar-framework.php',
+        YTRIP_PATH . '/vendor/codestar-framework/codestar-framework.php',
+        YTRIP_PATH . 'vendor/codestar-framework/classes/setup.class.php',
+    );
+    
+    foreach ( $csf_paths as $csf_path ) {
+        if ( file_exists( $csf_path ) ) {
+            require_once $csf_path;
+            break;
+        }
+    }
 }
 
 // Main Class
@@ -39,6 +50,7 @@ if ( ! class_exists( 'YTrip' ) ) {
         }
 
         public function __construct() {
+            // DON'T load textdomain here - load in init hook
             $this->includes();
             $this->init_hooks();
         }
@@ -69,12 +81,25 @@ if ( ! class_exists( 'YTrip' ) ) {
             require_once YTRIP_PATH . 'includes/class-pdf-generator.php';
             require_once YTRIP_PATH . 'includes/class-tickets.php';
             require_once YTRIP_PATH . 'includes/class-agent-portal.php';
+            require_once YTRIP_PATH . 'includes/class-github-helper.php';
 
             // Admin
             if ( is_admin() ) {
+                // Load simple admin fix - ONE FILE ONLY
+                require_once YTRIP_PATH . 'admin/simple-admin.php';
+                
+                // Load FULL DEBUG for troubleshooting
+                require_once YTRIP_PATH . 'admin/full-debug.php';
+                
+                // Load Codestar config if CSF exists
+                if ( class_exists( 'CSF' ) ) {
+                    require_once YTRIP_PATH . 'admin/codestar-config.php';
+                }
+                
+                // Load other admin files
                 require_once YTRIP_PATH . 'admin/class-admin.php';
-                require_once YTRIP_PATH . 'admin/codestar-config.php';
                 require_once YTRIP_PATH . 'admin/homepage-builder.php';
+                
                 // Ensure metaboxes directory exists before requiring
                 if ( file_exists( YTRIP_PATH . 'admin/metaboxes/tour-details.php' ) ) {
                     require_once YTRIP_PATH . 'admin/metaboxes/tour-details.php';
@@ -88,10 +113,19 @@ if ( ! class_exists( 'YTrip' ) ) {
         }
 
         private function init_hooks() {
+            // Load textdomain on plugins_loaded - AFTER all plugins are loaded
             add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+            
+            // Initialize GitHub Helper
+            add_action( 'plugins_loaded', 'ytrip_github_helper' );
         }
 
         public function load_textdomain() {
+            // Only load textdomain if not already loaded
+            if ( is_textdomain_loaded( 'ytrip' ) ) {
+                return;
+            }
+            
             load_plugin_textdomain( 'ytrip', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
         }
     }
@@ -100,16 +134,6 @@ if ( ! class_exists( 'YTrip' ) ) {
         return YTrip::instance();
     }
 
-    // Init Plugin
+    // Init Plugin on plugins_loaded
     add_action( 'plugins_loaded', 'YTrip' );
-
-    // Emergency Fix for Admin Capabilities
-    register_activation_hook( __FILE__, 'ytrip_fix_capabilities' );
-    function ytrip_fix_capabilities() {
-        $role = get_role( 'administrator' );
-        if ( $role ) {
-            $role->add_cap( 'manage_options' );
-            $role->add_cap( 'ytrip_settings' ); // Custom cap just in case
-        }
-    }
 }
