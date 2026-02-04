@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
 class YTrip_AJAX {
     
     public function __construct() {
@@ -26,12 +27,15 @@ class YTrip_AJAX {
         $meta = get_post_meta( $tour_id, 'ytrip_tour_details', true );
         $to   = isset( $meta['inquiry_email'] ) && ! empty( $meta['inquiry_email'] ) ? $meta['inquiry_email'] : get_option( 'admin_email' );
         
-        // Subject & Body
+        // Subject & Body - translation ready
         $subject = sprintf( __( 'New Inquiry: %s', 'ytrip' ), get_the_title( $tour_id ) );
-        $body    = "Name: $name\n";
-        $body   .= "Email: $email\n";
-        $body   .= "Tour: " . get_the_title( $tour_id ) . " (" . get_permalink( $tour_id ) . ")\n\n";
-        $body   .= "Message:\n$message\n";
+        $body    = sprintf(
+            /* translators: 1: name, 2: email, 3: tour title, 4: message */
+            __( 'Name: %1$s\nEmail: %2$s\nTour: %3$s\n\nMessage:', 'ytrip' ),
+            $name,
+            $email,
+            get_the_title( $tour_id )
+        ) . "\n$message";
 
         $headers = array( 'Content-Type: text/plain; charset=UTF-8' );
         $headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
@@ -39,7 +43,7 @@ class YTrip_AJAX {
         if ( wp_mail( $to, $subject, $body, $headers ) ) {
             wp_send_json_success( array( 'message' => __( 'Your inquiry has been sent successfully.', 'ytrip' ) ) );
         } else {
-            wp_send_json_error( array( 'message' => __( 'Failed to send email. Please try again later.', 'ytrip' ) ) );
+            wp_send_json_error( array( 'message' => __( 'Failed to send email. Please try again later.', 'ytrip' ) );
         }
     }
 

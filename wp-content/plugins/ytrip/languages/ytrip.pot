@@ -1,194 +1,439 @@
-# Copyright (C) 2026 YTrip
-# This file is distributed under the GPL-2.0+.
+# Copyright (C) 2025 YTrip
 msgid ""
 msgstr ""
-"Project-Id-Version: YTrip 1.0.0\n"
-"Report-Msgid-Bugs-To: https://zakharioustours.de\n"
-"POT-Creation-Date: 2026-01-31 08:00+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-04 20:30+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: LANGUAGE TEAM <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Code: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: YTrip 1.0.0\n"
 
-#: templates/single-ytrip_tour.php
-msgid "Home"
+# General
+msgid ""
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Tours"
+# Plugin Headers
+msgid "Plugin Name: YTrip - Travel Booking Manager"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "reviews"
+msgid "Description: Professional travel/tourism booking system with minimal styling and CodeStar Framework integration."
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Overview"
+msgid "Version: 1.0.0"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Itinerary"
+msgid "Author: YTrip"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Included/Excluded"
+msgid "Text Domain: ytrip"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "FAQ"
+msgid "Domain Path: /languages"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Highlights"
+# Admin
+msgid "YTrip Settings"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "No itinerary available."
+msgid "Settings"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Included"
+msgid "Typography"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Excluded"
+msgid "Line Heights"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "No FAQs available."
+msgid "Colors"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "/ person"
+msgid "Debugging"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Select Date"
+# Typography Section
+msgid "Body Font"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Adults"
+msgid "Configure body typography settings."
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Children"
+msgid "Heading Font"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Book Now"
+msgid "Configure headings typography settings."
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Free Cancellation"
+# Debugging Section
+msgid "Enable Debug Mode"
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Instant Confirmation"
+msgid "Enable detailed error logging and debug information."
 msgstr ""
 
-#: templates/single-ytrip_tour.php
-msgid "Secure Payment"
+msgid "Debug Log Level"
 msgstr ""
 
-#: templates/parts/tour-card.php
-msgid "Featured"
+msgid "Select how much information to log."
 msgstr ""
 
-#: templates/parts/tour-card.php
-msgid "Add to wishlist"
+msgid "Errors Only"
 msgstr ""
 
-#: templates/parts/tour-card.php
-msgid "From"
+msgid "Errors + Warnings"
 msgstr ""
 
-#: templates/parts/tour-card.php
-msgid "View Details"
+msgid "All Info"
 msgstr ""
 
-#: templates/homepage/hero-slider.php
-msgid "Award Winning Travel Agency"
+msgid "Log to File"
 msgstr ""
 
-#: templates/homepage/hero-slider.php
-msgid "Discover Your Next"
+msgid "Save debug logs to wp-content/debug.log."
 msgstr ""
 
-#: templates/homepage/hero-slider.php
-msgid "Adventure"
+msgid "Warning: Debug mode should be disabled in production environments for security and performance."
 msgstr ""
 
-#: templates/homepage/hero-slider.php
-msgid "Explore the world with our premium travel experiences. Book your dream vacation today."
+# GitHub Integration Section
+msgid "GitHub Integration"
 msgstr ""
 
-#: templates/homepage/hero-slider.php
-msgid "Explore Tours"
+msgid "GitHub Repository"
 msgstr ""
 
-#: templates/homepage/hero-slider.php
-msgid "Search Destinations"
+msgid "Enter your GitHub repository (e.g., username/repo-name)."
 msgstr ""
 
-#: templates/homepage/search-form.php
-msgid "Destination"
+msgid "GitHub Token"
 msgstr ""
 
-#: templates/homepage/search-form.php
-msgid "Where do you want to go?"
+msgid "Enter your GitHub Personal Access Token with repo permissions."
 msgstr ""
 
-#: templates/homepage/search-form.php
-msgid "Date"
+msgid "How to create a GitHub Token:"
 msgstr ""
 
-#: templates/homepage/search-form.php
-msgid "Select date"
+msgid "Go to GitHub"
 msgstr ""
 
-#: templates/homepage/search-form.php
-msgid "Guests"
+msgid "Settings"
 msgstr ""
 
-#: templates/homepage/search-form.php
-msgid "Guest"
+msgid "Developer settings"
 msgstr ""
 
-#: templates/homepage/search-form.php
-msgid "Search"
+msgid "Personal access tokens"
 msgstr ""
 
-#: templates/homepage/featured-tours.php
-msgid "Featured Tours"
+msgid "Generate new token"
 msgstr ""
 
-#: templates/homepage/featured-tours.php
-msgid "Discover our most popular travel experiences handpicked for you."
+msgid "Select"
 msgstr ""
 
-#: templates/homepage/featured-tours.php
-msgid "View All Tours"
+msgid "repo"
 msgstr ""
 
-#: templates/homepage/featured-tours.php
+msgid "permissions."
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "token"
+msgstr ""
+
+msgid "and paste here."
+msgstr ""
+
+# General Settings
+msgid "Currency"
+msgstr ""
+
+msgid "Select the default currency for bookings."
+msgstr ""
+
+msgid "Date Format"
+msgstr ""
+
+msgid "Select how dates are displayed."
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Select plugin language."
+msgstr ""
+
+msgid "US Dollar"
+msgstr ""
+
+msgid "Euro"
+msgstr ""
+
+msgid "British Pound"
+msgstr ""
+
+msgid "Egyptian Pound"
+msgstr ""
+
+msgid "UAE Dirham"
+msgstr ""
+
+msgid "Saudi Riyal"
+msgstr ""
+
+msgid "DD/MM/YYYY"
+msgstr ""
+
+msgid "MM/DD/YYYY"
+msgstr ""
+
+msgid "YYYY-MM-DD"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Arabic"
+msgstr ""
+
+msgid "Deutsch"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+# Shortcodes
+msgid "Please provide a tour ID."
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Message"
+msgstr ""
+
+msgid "Send Inquiry"
+msgstr ""
+
+msgid "Available Tours"
+msgstr ""
+
 msgid "No tours found."
 msgstr ""
 
-#: templates/homepage/destinations.php
-msgid "Popular Destinations"
+msgid "View Details"
 msgstr ""
 
-#: templates/homepage/destinations.php
-msgid "Explore breathtaking locations around the world."
+msgid "Search tours..."
 msgstr ""
 
-#. translators: %d: number of tours
-#: templates/homepage/destinations.php
-msgid "%d Tour"
-msgid_plural "%d Tours"
-msgstr[0] ""
-msgstr[1] ""
+msgid "Search"
+msgstr ""
+
+# AJAX
+msgid "Please fill in all required fields."
+msgstr ""
+
+msgid "New Inquiry: %s"
+msgstr ""
+
+msgid "Name: %1$s\nEmail: %2$s\nTour: %3$s\n\nMessage:"
+msgstr ""
+
+msgid "Your inquiry has been sent successfully."
+msgstr ""
+
+msgid "Failed to send email. Please try again later."
+msgstr ""
+
+# Post Types
+msgid "Tours"
+msgstr ""
+
+msgid "Tour"
+msgstr ""
+
+msgid "Add New"
+msgstr ""
+
+msgid "Add New Tour"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit Tour"
+msgstr ""
+
+msgid "New Tour"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "View Tour"
+msgstr ""
+
+msgid "Search Tours"
+msgstr ""
+
+msgid "No tours found."
+msgstr ""
+
+msgid "No tours found in trash."
+msgstr ""
+
+msgid "Bookings"
+msgstr ""
+
+msgid "Booking"
+msgstr ""
+
+msgid "Add New Booking"
+msgstr ""
+
+msgid "Edit Booking"
+msgstr ""
+
+msgid "New Booking"
+msgstr ""
+
+msgid "View Booking"
+msgstr ""
+
+msgid "View Booking"
+msgstr ""
+
+msgid "Search Bookings"
+msgstr ""
+
+msgid "No bookings found."
+msgstr ""
+
+msgid "No bookings found in trash."
+msgstr ""
+
+# Simple Admin
+msgid "Quick Status Check"
+msgstr ""
+
+msgid "Current User"
+msgstr ""
+
+msgid "User Role"
+msgstr ""
+
+msgid "Can manage_options"
+msgstr ""
+
+msgid "CSF Class"
+msgstr ""
+
+msgid "CSF Options Class"
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
+msgid "If CSF is not loaded, check the following:"
+msgstr ""
+
+msgid "File exists"
+msgstr ""
+
+msgid "For detailed information, visit"
+msgstr ""
+
+msgid "Debug Page"
+msgstr ""
+
+msgid "If you see \"Sorry, you are not allowed to access this page\", please:"
+msgstr ""
+
+msgid "Make sure you are logged in as"
+msgstr ""
+
+msgid "Administrator"
+msgstr ""
+
+msgid "Deactivate and reactivate the plugin"
+msgstr ""
+
+msgid "Clear WordPress cache"
+msgstr ""
+
+msgid "Check the"
+msgstr ""
+
+msgid "for details"
+msgstr ""
+
+# Frontend Fix
+msgid "Basic YTrip styles"
+msgstr ""
+
+msgid "Booking Form"
+msgstr ""
+
+msgid "Form Row"
+msgstr ""
+
+msgid "Primary Button"
+msgstr ""
+
+# Helper Functions
+msgid "Helper functions"
+msgstr ""
+
+# Dynamic CSS
+msgid "Dynamic CSS Generator & Design System"
+msgstr ""
+
+msgid "Handles dynamic coloring, typography, and layout settings using Color Groups."
+msgstr ""
+
+msgid "Brand Colors"
+msgstr ""
+
+msgid "Base Colors"
+msgstr ""
+
+msgid "Background"
+msgstr ""
+
+msgid "Surface"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Border Radius"
+msgstr ""
+
+msgid "Section Spacing"
+msgstr ""
+
+msgid "Primary"
+msgstr ""
+
+msgid "Secondary"
+msgstr ""
+
+msgid "Accent"
+msgstr ""
+
+msgid "radius"
+msgstr ""
+
+msgid "spacing"
+msgstr ""
