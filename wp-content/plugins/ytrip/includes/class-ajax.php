@@ -41,9 +41,11 @@ class YTrip_AJAX {
             'Content-Type' => 'text/plain; charset=UTF-8',
             'Reply-To' => $name . ' <' . $email . '>',
         );
+
+        if ( wp_mail( $to, $subject, $body, $headers ) ) {
             wp_send_json_success( array( 'message' => __( 'Your inquiry has been sent successfully.', 'ytrip' ) ) );
         } else {
-            wp_send_json_error( array( 'message' => __( 'Failed to send email. Please try again later.', 'ytrip' ) );
+            wp_send_json_error( array( 'message' => __( 'Failed to send email. Please try again later.', 'ytrip' ) ) );
         }
     }
 
