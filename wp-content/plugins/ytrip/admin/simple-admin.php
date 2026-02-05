@@ -99,8 +99,11 @@ function ytrip_settings_page() {
         <?php endif; ?>
         
         <div class="card" style="max-width: 800px; margin: 20px 0; padding: 20px; border: 1px solid #ccc;">
-            <h2>Debug Page</h2>
-            <p>For detailed information, visit the <a href="<?php echo admin_url('admin.php?page=ytrip-debug'); ?>">Full Debug Page</a></p>
+            <h2>Debug Tools</h2>
+            <ul>
+                <li><a href="<?php echo admin_url('admin.php?page=ytrip-debug'); ?>">🔍 Full Debug Page</a> - System information</li>
+                <li><a href="<?php echo wp_nonce_url(admin_url('?ytrip_debug_assets=1'), 'ytrip_debug_assets', '_wpnonce'); ?>">📁 Asset Debug</a> - Check CSS/JS files for 404 errors</li>
+            </ul>
         </div>
         
         <div class="card" style="max-width: 800px; margin: 20px 0; padding: 20px; border: 1px solid #ccc;">

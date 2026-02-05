@@ -144,13 +144,15 @@ class YTrip_Template_Loader {
         );
 
         // Main JS - core functionality
-        wp_enqueue_script(
-            'ytrip-main',
-            YTRIP_URL . 'assets/js/main.js',
-            array( 'jquery' ),
-            YTRIP_VERSION,
-            true // Load in footer
-        );
+        if ( file_exists( YTRIP_PATH . 'assets/js/main.js' ) ) {
+            wp_enqueue_script(
+                'ytrip-main',
+                YTRIP_URL . 'assets/js/main.js',
+                array( 'jquery' ),
+                YTRIP_VERSION,
+                true // Load in footer
+            );
+        }
     }
 
     /**
@@ -238,37 +240,37 @@ class YTrip_Template_Loader {
     private function enqueue_optional_features() {
         // Animations JS (scroll-triggered animations)
         $animations_enabled = $this->options['enable_animations'] ?? false;
-        if ( $animations_enabled ) {
-            wp_enqueue_script( 
-                'ytrip-animations', 
-                YTRIP_URL . 'assets/js/animations.js', 
+        if ( $animations_enabled && file_exists( YTRIP_PATH . 'assets/js/animations.js' ) ) {
+            wp_enqueue_script(
+                'ytrip-animations',
+                YTRIP_URL . 'assets/js/animations.js',
                 array(), // No jQuery dependency for better performance
-                YTRIP_VERSION, 
-                true 
+                YTRIP_VERSION,
+                true
             );
         }
 
         // Parallax JS (hero parallax effects)
         $parallax_enabled = $this->options['enable_parallax'] ?? false;
-        if ( $parallax_enabled ) {
-            wp_enqueue_script( 
-                'ytrip-parallax', 
-                YTRIP_URL . 'assets/js/parallax.js', 
-                array(), 
-                YTRIP_VERSION, 
-                true 
+        if ( $parallax_enabled && file_exists( YTRIP_PATH . 'assets/js/parallax.js' ) ) {
+            wp_enqueue_script(
+                'ytrip-parallax',
+                YTRIP_URL . 'assets/js/parallax.js',
+                array(),
+                YTRIP_VERSION,
+                true
             );
         }
 
         // Microinteractions JS - only on pages with interactive elements
         $microinteractions_enabled = $this->options['enable_microinteractions'] ?? true;
-        if ( $microinteractions_enabled && ( is_singular( 'ytrip_tour' ) || is_front_page() ) ) {
-            wp_enqueue_script( 
-                'ytrip-microinteractions', 
-                YTRIP_URL . 'assets/js/microinteractions.js', 
-                array(), 
-                YTRIP_VERSION, 
-                true 
+        if ( $microinteractions_enabled && ( is_singular( 'ytrip_tour' ) || is_front_page() ) && file_exists( YTRIP_PATH . 'assets/js/microinteractions.js' ) ) {
+            wp_enqueue_script(
+                'ytrip-microinteractions',
+                YTRIP_URL . 'assets/js/microinteractions.js',
+                array(),
+                YTRIP_VERSION,
+                true
             );
         }
     }
