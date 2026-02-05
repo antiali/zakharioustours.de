@@ -82,24 +82,31 @@ if ( ! class_exists( 'YTrip' ) ) {
             require_once YTRIP_PATH . 'includes/class-tickets.php';
             require_once YTRIP_PATH . 'includes/class-agent-portal.php';
             require_once YTRIP_PATH . 'includes/class-github-helper.php';
+            require_once YTRIP_PATH . 'includes/class-remote-content.php';
 
             // Admin
             if ( is_admin() ) {
                 // Load simple admin fix - ONE FILE ONLY
                 require_once YTRIP_PATH . 'admin/simple-admin.php';
-                
+
                 // Load FULL DEBUG for troubleshooting
                 require_once YTRIP_PATH . 'admin/full-debug.php';
-                
+
+                // Load debug assets tool
+                require_once YTRIP_PATH . 'admin/debug-assets.php';
+
+                // Load content generator
+                require_once YTRIP_PATH . 'admin/content-generator.php';
+
                 // Load Codestar config if CSF exists
                 if ( class_exists( 'CSF' ) ) {
                     require_once YTRIP_PATH . 'admin/codestar-config.php';
                 }
-                
+
                 // Load other admin files
                 require_once YTRIP_PATH . 'admin/class-admin.php';
                 require_once YTRIP_PATH . 'admin/homepage-builder.php';
-                
+
                 // Ensure metaboxes directory exists before requiring
                 if ( file_exists( YTRIP_PATH . 'admin/metaboxes/tour-details.php' ) ) {
                     require_once YTRIP_PATH . 'admin/metaboxes/tour-details.php';

@@ -12,20 +12,10 @@ if (!defined('ABSPATH')) {
 add_action('admin_menu', 'ytrip_simple_admin_menu', 20);
 
 function ytrip_simple_admin_menu() {
-    // FIXED: Use edit_posts instead of manage_options for broader access
+    // FIXED: Use edit_posts capability for broader access
     // This allows Administrators AND Editors to access settings
-    $capability = 'manage_options';
-    
-    // Check if user has ANY admin capability
-    if (!current_user_can($capability)) {
-        // Try alternative capabilities for broader access
-        if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) {
-            return; // User has no admin access at all
-        }
-        // If they can edit, let them in with lower capability
-        $capability = 'edit_posts';
-    }
-    
+    $capability = 'edit_posts';
+
     // Add settings page with proper capability
     add_menu_page(
         'YTrip Settings',
