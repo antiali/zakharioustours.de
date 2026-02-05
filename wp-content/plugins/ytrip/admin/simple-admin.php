@@ -9,22 +9,23 @@ if (!defined('ABSPATH')) {
 }
 
 // Load on admin_menu - proper timing
-add_action('admin_menu', 'ytrip_simple_admin_menu', 20);
+add_action('admin_menu', 'ytrip_simple_admin_menu', 999);
 
 function ytrip_simple_admin_menu() {
     // FIXED: Use edit_posts capability for broader access
     // This allows Administrators AND Editors to access settings
     $capability = 'edit_posts';
 
-    // Add settings page with proper capability
-    add_menu_page(
-        'YTrip Settings',
-        'YTrip',
+    // Add Debug/Status page - different slug to avoid conflict with CSF
+    add_submenu_page(
+        'ytrip-settings',  // Parent slug
+        'YTrip Debug',
+        'Debug',
         $capability,
-        'ytrip-settings',
+        'ytrip-debug',
         'ytrip_settings_page',
-        'dashicons-airplane',
-        25
+        'dashicons-admin-tools',
+        99
     );
 }
 

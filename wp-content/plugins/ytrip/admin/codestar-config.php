@@ -27,7 +27,7 @@ CSF::createOptions( $prefix, array(
     'menu_type'       => 'menu',
     'menu_icon'       => 'dashicons-airplane',
     'menu_position'   => 25,
-    'menu_capability'  => 'manage_options', // ✅ CORRECT: menu_capability
+    'menu_capability'  => 'edit_posts', // Fixed: Use edit_posts instead of manage_options for broader access
     'menu_hidden'     => false,
     
     // Show in admin bar
