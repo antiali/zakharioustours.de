@@ -37,10 +37,10 @@ class YTrip_AJAX {
             get_the_title( $tour_id )
         ) . "\n$message";
 
-        $headers = array( 'Content-Type: text/plain; charset=UTF-8' );
-        $headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
-
-        if ( wp_mail( $to, $subject, $body, $headers ) ) {
+        $headers = array(
+            'Content-Type' => 'text/plain; charset=UTF-8',
+            'Reply-To' => $name . ' <' . $email . '>',
+        );
             wp_send_json_success( array( 'message' => __( 'Your inquiry has been sent successfully.', 'ytrip' ) ) );
         } else {
             wp_send_json_error( array( 'message' => __( 'Failed to send email. Please try again later.', 'ytrip' ) );
