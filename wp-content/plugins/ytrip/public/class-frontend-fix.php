@@ -25,7 +25,7 @@ class YTrip_Frontend_Fix {
     public function __construct() {
         // Dequeue all external CDN scripts
         add_action('wp_enqueue_scripts', array($this, 'dequeue_external_scripts'));
-        add_action('wp_enqueue_styles', array($this, 'dequeue_external_styles'));
+        add_action('wp_enqueue_scripts', array($this, 'dequeue_external_styles'));
     }
     
     /**

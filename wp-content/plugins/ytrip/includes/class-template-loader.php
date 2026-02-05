@@ -131,20 +131,24 @@ class YTrip_Template_Loader {
             null
         );
 
-        // Main CSS - core styles
-        wp_enqueue_style( 
-            'ytrip-main', 
-            YTRIP_URL . 'assets/css/optimized-main.css', 
-            array(), 
-            YTRIP_VERSION 
+        // Main CSS - try optimized first, fallback to main.css
+        $main_css = YTRIP_URL . 'assets/css/optimized-main.css';
+        if ( ! file_exists( YTRIP_PATH . 'assets/css/optimized-main.css' ) ) {
+            $main_css = YTRIP_URL . 'assets/css/main.css';
+        }
+        wp_enqueue_style(
+            'ytrip-main',
+            $main_css,
+            array(),
+            YTRIP_VERSION
         );
 
         // Main JS - core functionality
-        wp_enqueue_script( 
-            'ytrip-main', 
-            YTRIP_URL . 'assets/js/main.js', 
-            array( 'jquery' ), 
-            YTRIP_VERSION, 
+        wp_enqueue_script(
+            'ytrip-main',
+            YTRIP_URL . 'assets/js/main.js',
+            array( 'jquery' ),
+            YTRIP_VERSION,
             true // Load in footer
         );
     }
@@ -154,7 +158,7 @@ class YTrip_Template_Loader {
      */
     private function enqueue_single_tour_assets() {
         $layout = $this->options['single_tour_layout'] ?? 'layout_1';
-        
+
         $layout_css_map = array(
             'layout_1' => 'single-layout-1.css',
             'layout_2' => 'single-layout-2.css',
@@ -164,12 +168,15 @@ class YTrip_Template_Loader {
         );
 
         if ( isset( $layout_css_map[$layout] ) ) {
-            wp_enqueue_style( 
-                'ytrip-layout-' . $layout, 
-                YTRIP_URL . 'assets/css/layouts/' . $layout_css_map[$layout], 
-                array( 'ytrip-main' ), 
-                YTRIP_VERSION 
-            );
+            $layout_css = YTRIP_PATH . 'assets/css/layouts/' . $layout_css_map[$layout];
+            if ( file_exists( $layout_css ) ) {
+                wp_enqueue_style(
+                    'ytrip-layout-' . $layout,
+                    YTRIP_URL . 'assets/css/layouts/' . $layout_css_map[$layout],
+                    array( 'ytrip-main' ),
+                    YTRIP_VERSION
+                );
+            }
         }
     }
 
@@ -178,30 +185,34 @@ class YTrip_Template_Loader {
      */
     private function enqueue_archive_assets() {
         // Archive filters CSS
-        wp_enqueue_style( 
-            'ytrip-archive-filters', 
-            YTRIP_URL . 'assets/css/archive-filters.css', 
-            array( 'ytrip-main' ), 
-            YTRIP_VERSION 
-        );
-        
+        if ( file_exists( YTRIP_PATH . 'assets/css/archive-filters.css' ) ) {
+            wp_enqueue_style(
+                'ytrip-archive-filters',
+                YTRIP_URL . 'assets/css/archive-filters.css',
+                array( 'ytrip-main' ),
+                YTRIP_VERSION
+            );
+        }
+
         // Card styles (needed for tour cards in archive)
-        wp_enqueue_style( 
-            'ytrip-cards', 
-            YTRIP_URL . 'assets/css/cards/card-styles.css', 
-            array( 'ytrip-main' ), 
-            YTRIP_VERSION 
-        );
-        
+        if ( file_exists( YTRIP_PATH . 'assets/css/cards/card-styles.css' ) ) {
+            wp_enqueue_style(
+                'ytrip-cards',
+                YTRIP_URL . 'assets/css/cards/card-styles.css',
+                array( 'ytrip-main' ),
+                YTRIP_VERSION
+            );
+        }
+
         // Archive filters JS (only if AJAX enabled)
         $ajax_enabled = $this->options['archive_enable_ajax'] ?? true;
-        if ( $ajax_enabled ) {
-            wp_enqueue_script( 
-                'ytrip-archive-filters', 
-                YTRIP_URL . 'assets/js/archive-filters.js', 
-                array( 'jquery' ), 
-                YTRIP_VERSION, 
-                true 
+        if ( $ajax_enabled && file_exists( YTRIP_PATH . 'assets/js/archive-filters.js' ) ) {
+            wp_enqueue_script(
+                'ytrip-archive-filters',
+                YTRIP_URL . 'assets/js/archive-filters.js',
+                array( 'jquery' ),
+                YTRIP_VERSION,
+                true
             );
         }
     }
@@ -211,12 +222,14 @@ class YTrip_Template_Loader {
      */
     private function enqueue_homepage_assets() {
         // Card styles (needed for tour cards on homepage)
-        wp_enqueue_style( 
-            'ytrip-cards', 
-            YTRIP_URL . 'assets/css/cards/card-styles.css', 
-            array( 'ytrip-main' ), 
-            YTRIP_VERSION 
-        );
+        if ( file_exists( YTRIP_PATH . 'assets/css/cards/card-styles.css' ) ) {
+            wp_enqueue_style(
+                'ytrip-cards',
+                YTRIP_URL . 'assets/css/cards/card-styles.css',
+                array( 'ytrip-main' ),
+                YTRIP_VERSION
+            );
+        }
     }
 
     /**
